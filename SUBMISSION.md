@@ -1,6 +1,6 @@
 # Submission: Ajaia Docs (Full Stack Product Engineer)
 
-**Candidate:** <YOUR NAME>
+**Candidate:** Usama Ejaz
 
 ## Links
 

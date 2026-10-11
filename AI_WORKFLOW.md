@@ -3,7 +3,7 @@
 ## Tools used
 
 - **Claude (Anthropic), in a chat with a sandboxed code-execution environment**: planning, scoping, code generation, running installs/builds/tests, and scripted browser testing (Playwright) with screenshots I reviewed.
-- <ADD ANY OTHERS YOU USED, e.g. Cursor / Copilot for edits during deployment>
+- **Claude Code (VS Code extension)**: pre-deploy verification on my machine (clean install, tests, typecheck, production build, HTTP smoke test of the share and import flows) and a dependency audit.
 
 ## How I used it
 
@@ -28,7 +28,7 @@ I treated the AI as a fast implementer and reviewer, and kept product and archit
 - **UX fix from screenshot review:** the "Text" toolbar button showed active inside lists (list items contain paragraphs), which looked like two conflicting states. Changed the active logic.
 - **Storage format:** chose HTML over Tiptap JSON so the import pipeline (markdown/docx → HTML) works server-side without a DOM shim, and added an allow-list sanitizer since HTML is stored.
 - **Security choices I insisted on:** 404 instead of 403 for documents you can't access, HMAC-signed session cookie instead of a plain user id, and server-side re-validation of everything the client also checks.
-- <ADD ANY CHANGES YOU MADE YOURSELF DURING REVIEW/DEPLOYMENT>
+- **Pre-deploy dependency audit:** `npm audit` flagged advisories in the two libraries that handle untrusted input, so I upgraded `sanitize-html` (2.13 → 2.18) and `mammoth` (1.8 → 1.13) and re-ran tests, the build, and a real `.docx` import. Next.js stays on 14.2.35, the latest 14.x release: the open advisories need a major upgrade, and I checked that the app doesn't use the affected features (`next/image`, server actions, middleware, rewrites). Moving to Next 15 is on the follow-up list.
 
 ## How I verified correctness, UX, and reliability
 
