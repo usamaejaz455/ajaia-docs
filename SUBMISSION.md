@@ -8,7 +8,8 @@
 |---|---|
 | Live app | https://ajaia-docs-rho-tan.vercel.app |
 | Google Drive folder | <DRIVE_FOLDER_URL> |
-| Walkthrough video | <VIDEO_URL> |
+| Walkthrough video | https://www.loom.com/share/87e9370e3d9f41aca6c8d2cfb9a88e9f |
+| Source code (GitHub) | https://github.com/usamaejaz455/ajaia-docs |
 
 ## Test accounts
 
