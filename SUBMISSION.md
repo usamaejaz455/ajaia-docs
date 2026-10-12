@@ -7,7 +7,7 @@
 | | |
 |---|---|
 | Live app | https://ajaia-docs-rho-tan.vercel.app |
-| Google Drive folder | <DRIVE_FOLDER_URL> |
+| Google Drive folder | https://drive.google.com/drive/folders/1jNJXq_sBKOEQIpKcPW1JeckNNajvaikF?usp=sharing |
 | Walkthrough video | https://www.loom.com/share/87e9370e3d9f41aca6c8d2cfb9a88e9f |
 | Source code (GitHub) | https://github.com/usamaejaz455/ajaia-docs |
 
