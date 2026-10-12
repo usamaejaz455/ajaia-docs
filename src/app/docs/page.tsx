@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
@@ -5,6 +6,7 @@ import { listDocumentsForUser, type DocumentSummary } from "@/lib/documents";
 import TopBar from "@/components/TopBar";
 import DashboardActions from "@/components/DashboardActions";
 import LocalTime from "@/components/LocalTime";
+import RefreshOnRestore from "@/components/RefreshOnRestore";
 
 export const dynamic = "force-dynamic";
 
@@ -35,6 +37,7 @@ export default async function DocsPage() {
   return (
     <>
       <TopBar user={user} />
+      <RefreshOnRestore renderId={randomUUID()} />
       <main className="dash">
         <div className="dash-head">
           <h1>Documents</h1>

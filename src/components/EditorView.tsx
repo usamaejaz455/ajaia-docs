@@ -100,6 +100,17 @@ export default function EditorView({ doc, role }: Props) {
     if (trimmed !== lastSavedTitle.current) schedule({ title: trimmed });
   }
 
+  // With edits still pending, the dashboard would load before they're saved and show the old
+  // title. Save first, then navigate; stay put if the save fails so nothing is lost.
+  async function onBack(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (status === "saved" || e.metaKey || e.ctrlKey || e.shiftKey) return; // normal link navigation
+    e.preventDefault();
+    if (timer.current) clearTimeout(timer.current);
+    while (inFlight.current) await new Promise((r) => setTimeout(r, 50));
+    await flush();
+    if (pending.current.title === undefined && pending.current.content === undefined) router.push("/docs");
+  }
+
   async function onDelete() {
     if (!confirm(`Delete "${title}"? This can't be undone.`)) return;
     try {
@@ -123,7 +134,7 @@ export default function EditorView({ doc, role }: Props) {
     <div className="editor-shell">
       <header className="editor-head">
         <div className="editor-head-row">
-          <Link href="/docs" className="button ghost" onClick={() => router.refresh()} aria-label="Back to documents">← Docs</Link>
+          <Link href="/docs" className="button ghost" onClick={onBack} aria-label="Back to documents">← Docs</Link>
           <input
             className="title-input"
             value={title}
