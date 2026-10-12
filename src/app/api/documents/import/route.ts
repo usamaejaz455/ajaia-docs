@@ -13,7 +13,8 @@ export const POST = withErrors(async (req: Request) => {
     throw new HttpError(400, "Expected a multipart form upload.");
   });
   const file = form.get("file");
-  if (!(file instanceof File)) throw new HttpError(400, "Choose a file to upload.");
+  // FormData values are File | string; avoid `instanceof File` (no global File on Node 18).
+  if (!file || typeof file === "string") throw new HttpError(400, "Choose a file to upload.");
   const html = await fileToDocumentHtml(file.name, Buffer.from(await file.arrayBuffer()));
   const doc = await createDocument(user.id, titleFromFilename(file.name), html);
   return NextResponse.json({ id: doc.id, title: doc.title }, { status: 201 });

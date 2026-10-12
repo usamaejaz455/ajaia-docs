@@ -2,7 +2,7 @@
 
 A lightweight collaborative document editor: create, format, import, and share documents.
 
-- **Live app:** <LIVE_URL>
+- **Live app:** https://ajaia-docs-rho-tan.vercel.app
 - **Walkthrough video:** see `VIDEO_URL.txt`
 - **Design notes:** [ARCHITECTURE.md](ARCHITECTURE.md) · **AI workflow:** [AI_WORKFLOW.md](AI_WORKFLOW.md)
 

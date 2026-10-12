@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| Live app | <LIVE_URL> |
+| Live app | https://ajaia-docs-rho-tan.vercel.app |
 | Google Drive folder | <DRIVE_FOLDER_URL> |
 | Walkthrough video | <VIDEO_URL> |
 
